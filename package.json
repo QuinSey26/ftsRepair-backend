@@ -1,5 +1,5 @@
 {
-  "name": "FTS techTicket MERN backend",
+  "name": "fts-repair",
   "version": "1.0.0",
   "description": "Backend for techTicket app",
   "main": "server.js",
