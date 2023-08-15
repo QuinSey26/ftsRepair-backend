@@ -10,24 +10,24 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   email: {
     type: String,
-    required: [true, "Email is required"],
+    required: true,
     unique: true,
   },
   password: {
     type: String,
-    required: [true, "Password is required"],
-    minlength: [5, "Password must be at least 5 characters long"],
+    required: true,
   },
   firstName: {
     type: String,
-    required: [true, "First name is required"],
+    required: true,
   },
   lastName: {
     type: String,
-    required: [true, "Last name is required"],
+    required: true,
   },
   role: {
     type: String,
+    default: "Tech",
     enum: ["Tech", "Admin"],
   },
   active: {
@@ -50,16 +50,18 @@ userSchema.statics.signup = async function (
   lastName,
   role
 ) {
-  // Validation checks
-  if (!email || !password || !firstName || !lastName) {
-    throw Error("All fields must be filled");
-  }
-  if (!validator.isEmail(email)) {
-    throw Error("Email not valid");
-  }
-  if (!validator.isStrongPassword(password)) {
-    throw Error("Password not strong enough");
-  }
+    // Validation
+    if (!email || !password) {
+      throw Error("All fields must be filled");
+    }
+    if (!validator.isEmail(email)) {
+      throw Error("Email is not valid");
+    }
+    if (!validator.isStrongPassword(password)) {
+      throw Error("Password not strong enough");
+    }
+  
+
 
   // Check if email already exists
   const exists = await this.findOne({ email });
