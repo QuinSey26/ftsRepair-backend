@@ -50,10 +50,6 @@ userSchema.statics.signup = async function (
   lastName,
   role
 ) {
-
-  
-
-
   // Check if email already exists
   const exists = await this.findOne({ email });
   if (exists) {
