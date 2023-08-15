@@ -16,7 +16,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, "Password is required"],
-    minlength: [3, "Password must be at least 3 characters long"],
+    minlength: [5, "Password must be at least 5 characters long"],
   },
   firstName: {
     type: String,
@@ -28,7 +28,6 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    default: "Tech",
     enum: ["Tech", "Admin"],
   },
   active: {
