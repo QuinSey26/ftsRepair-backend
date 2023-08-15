@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const ticketsRoutes = require("./routes/ticketsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
+const cors = require('cors')
 const helmet = require("helmet");
 
 // Create an instance of the Express application
@@ -10,6 +11,8 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Parse incoming requests with JSON payloads
+
+app.use(cors())
 
 // Enable Helmet middleware for enhanced security
 app.use(helmet());
